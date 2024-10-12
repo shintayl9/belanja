@@ -6,15 +6,15 @@ class HomePage extends StatelessWidget {
     Item(
         name: 'Sugar',
         price: 5000,
-        image: 'images/sugar.jpg',
-        stock: 10,
-        rating: 4.5),
+        image: 'assets/sugar.jpg',
+        stock: 15,
+        rating: 4.8),
     Item(
         name: 'Salt',
         price: 2000,
-        image: 'images/salt.jpeg',
-        stock: 20,
-        rating: 4.2),
+        image: 'assets/salt.jpeg',
+        stock: 10,
+        rating: 4.5),
   ];
 
   @override
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Image.asset(
-                          item.image ?? 'images/salt.jpeg',
+                          item.image ?? 'assets/salt.jpeg',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -79,6 +79,13 @@ class HomePage extends StatelessWidget {
               ),
             );
           },
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Nama: Shinta Yulistiana, NIM: 362358302076',
+          textAlign: TextAlign.center,
         ),
       ),
     );
