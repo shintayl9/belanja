@@ -3,8 +3,18 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   final List<Item> items = [
-    Item(name: 'Sugar', price: 5000),
-    Item(name: 'Salt', price: 2000)
+    Item(
+        name: 'Sugar',
+        price: 5000,
+        image: 'assets/sugar.png',
+        stock: 10,
+        rating: 4.5),
+    Item(
+        name: 'Salt',
+        price: 2000,
+        image: 'assets/salt.png',
+        stock: 20,
+        rating: 4.2),
   ];
 
   @override
@@ -16,28 +26,56 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         margin: EdgeInsets.all(8),
-        child: ListView.builder(
+        child: GridView.builder(
           padding: EdgeInsets.all(8),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8.0,
+            mainAxisSpacing: 8.0,
+            childAspectRatio: 0.75,
+          ),
           itemCount: items.length,
           itemBuilder: (context, index) {
             final item = items[index];
             return InkWell(
               onTap: () {
-                Navigator.pushNamed(context, '/item',
-                    arguments: Item(name: 'Salt', price: 2000));
+                Navigator.pushNamed(context, '/item', arguments: item);
               },
-              child: Container(
-                margin: EdgeInsets.all(8),
-                child: Row(
-                  children: [
-                    Expanded(child: Text(item.name ?? 'No Name')),
-                    Expanded(
-                      child: Text(
-                        item.price.toString(),
-                        textAlign: TextAlign.end,
+              child: Hero(
+                tag: 'item_${item.name}',
+                child: Card(
+                  elevation: 4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Image.asset(
+                          item.image ??
+                              'images/salt.jpeg',
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(item.name ?? 'No Name',
+                                style: TextStyle(fontSize: 16)),
+                            Text('Price: ${item.price}'),
+                            Text('Stock: ${item.stock}'),
+                            Row(
+                              children: [
+                                Icon(Icons.star,
+                                    color: Colors.yellow, size: 16),
+                                Text('${item.rating}'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
