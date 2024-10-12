@@ -6,13 +6,13 @@ class HomePage extends StatelessWidget {
     Item(
         name: 'Sugar',
         price: 5000,
-        image: 'assets/sugar.png',
+        image: 'images/sugar.jpg',
         stock: 10,
         rating: 4.5),
     Item(
         name: 'Salt',
         price: 2000,
-        image: 'assets/salt.png',
+        image: 'images/salt.jpeg',
         stock: 20,
         rating: 4.2),
   ];
@@ -50,8 +50,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Image.asset(
-                          item.image ??
-                              'images/salt.jpeg',
+                          item.image ?? 'images/salt.jpeg',
                           fit: BoxFit.cover,
                         ),
                       ),
