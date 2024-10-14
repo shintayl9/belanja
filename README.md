@@ -9,3 +9,4 @@ Hasil Tugas Praktikum 2:
 ![Screenshot belanja](images/hasil%20tuprak2.1.png)
 ![Screenshot belanja](images/hasil%20tuprak2.2.png)
 ![Screenshot belanja](images/hasil%20tuprak2.3.png)
+![Screenshot belanja](images/hasil_belanja1.gif)
